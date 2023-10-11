@@ -1,0 +1,20 @@
+trigger:
+  tags:
+    include:
+    - '*'
+
+resources:
+  repositories:
+  - repository: PipelineTemplates
+    type: git
+    name: PipelineTemplates
+
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+- template: bicep-registry/publish.yml@PipelineTemplates
+  parameters:
+    azureSubscription: 'Eruza-INT'
+    registryName: 'eruza'
+    moduleName: 'network'

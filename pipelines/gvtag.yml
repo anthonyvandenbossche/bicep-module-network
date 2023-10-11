@@ -1,0 +1,15 @@
+trigger:
+- master
+- main
+
+resources:
+  repositories:
+  - repository: PipelineTemplates
+    type: git
+    name: PipelineTemplates
+
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+- template: gitversion/tag.yml@PipelineTemplates
