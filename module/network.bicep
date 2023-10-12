@@ -4,6 +4,7 @@
 ])
 param location string
 @allowed([
+  'integration'
   'acceptance'
   'production'
 ])
@@ -15,6 +16,7 @@ param subnetPrefix string
 var envShort = {
   production: 'prd'
   acceptance: 'acc'
+  integration: 'int'
 }
 var locShort = {
   westeurope: 'we'
