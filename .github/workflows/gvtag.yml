@@ -32,4 +32,4 @@ jobs:
       - name: Tag the repo
         run: |
           echo ${{ steps.gitversion.outputs.semVer }}
-          echo ${{ envs.semVer }}
+          echo ${{ env.semVer }}
