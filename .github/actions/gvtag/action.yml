@@ -1,0 +1,25 @@
+name: 'Tag a git version'
+description: 'Taggging a repo with a git version'
+
+runs:
+  using: composite
+  steps:
+  - uses: actions/checkout@v3
+    with:
+      fetch-depth: 0
+  - name: Install GitVersion
+    uses: gittools/actions/gitversion/setup@v0
+    with:
+      versionSpec: '5.12.0'
+  - name: Determine Version
+    id: gitversion
+    uses: gittools/actions/gitversion/execute@v0
+    with:
+      useConfigFile: true
+      configFilePath: GitVersion.yml
+  - name: Tag the repo
+    if: ${{ github.ref == 'refs/heads/main' }}
+    run: |
+      echo ${{ steps.gitversion.outputs.semVer }}
+      git tag ${{ steps.gitversion.outputs.semVer }}
+      git push origin ${{ steps.gitversion.outputs.semVer }}
