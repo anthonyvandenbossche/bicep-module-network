@@ -2,7 +2,7 @@ name: GitVersion Tag
 
 permissions:
   id-token: write
-  contents: read
+  contents: write
 
 on:
   push:
@@ -32,4 +32,5 @@ jobs:
       - name: Tag the repo
         run: |
           echo ${{ steps.gitversion.outputs.semVer }}
-          echo ${{ env.semVer }}
+          git tag ${{ steps.gitversion.outputs.semVer }}
+          git push origin ${{ steps.gitversion.outputs.semVer }}
