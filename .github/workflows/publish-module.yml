@@ -27,5 +27,5 @@ jobs:
         uses: Azure/cli@v1.0.8
         with:
           inlineScript: |
-          az bicep publish --force --file .\module\network.bicep --target br:eruza.azurecr.io/bicep/modules/network:v${{ vars.GITHUB_REF_NAME }}
+            az bicep publish --force --file .\module\network.bicep --target br:eruza.azurecr.io/bicep/modules/network:v${{ vars.GITHUB_REF_NAME }}
           # azcliversion: # optional, default is agentazcliversion
